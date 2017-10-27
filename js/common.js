@@ -37,9 +37,12 @@ $(function () {
         iButton : $("#happy_id"),
         smaller : $(".smaller"),
         enlarge : $(".enlarge"),
+        msg : $('.message'),
         iHappyfn : function (a,b,c) {
-            console.log(b.val()+c.val());
             a.attr("src",b.val()+c.val());
+        },
+        removeMsg : function (a) {
+            if(a)a.remove();
         }
     }
 
@@ -52,13 +55,14 @@ $(function () {
     with(window.location) {
         var vipaddr = search.substring(search.indexOf("=") + 1);
         if (vipaddr != null && vipaddr != '') {
-            $(".message").remove();
+            user.removeMsg(user.msg);
             user.iVip.removeAttr("placeholder").attr("value", vipaddr);
             user.iPlayer.attr("src", user.iInterface.eq(0).val() + vipaddr);
         }
     }
     with(user){
         iButton.on("click",function () {
+            removeMsg(msg);
             iHappyfn(iPlayer,iInterface,iVip);
         });
         iFramescale.on("click",function () {
