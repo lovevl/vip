@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>嘻嘻视频</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+        body{
+            background: url("img/bg2.gif") repeat repeat;
+        }
+        @media (min-width: 992px) {
+            .player-i{
+                height: 550px;
+                /*margin-bottom: 20px;*/
+            }
+        }
+        .player-i{
+            background-color: white;
+            text-align: center;
+        }
+        .container-center{
+            margin: 0 auto;
+        }
+        h3{
+            margin-bottom: 20px;
+        }
+        /*.input-group-addon{*/
+            /*background-color: aqua;*/
+        /*}*/
+        .user-group{
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+        footer{
+            margin-top: 20px;
+        }
+        footer p{
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="container user-title">
+    <h3 class="text-center">嘻嘻视频，免vip看全网视频</h3>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-lg-8 col-lg-offset-2 ">
+            <div class="player-i" id="iframe_div">
+                <iframe id="iframe-player" src="" frameborder="0"
+                height="100%" width="100%" scrolling="no"
+                ></iframe>
+                <!--<iframe id="iframe-player"  src="https://www.baidu.com/" frameborder="0"-->
+                        <!--height="100%" width="100%"-->
+                <!--&gt;</iframe>-->
+            </div>
+
+            <div class="input-group user-group">
+                <span class="input-group-addon span-select">更换接口:</span>
+                <select class="form-control selector" id="interface_id">
+                    <option value="http://000o.cc/jx/ty.php?url=" selected="">000o【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.wmxz.wang/video.php?url=">wmxz【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://2.jx.72du.com/video.php?url=">72du【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://jiexi.071811.cc/jx2.php?url=">071811【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://api.nepian.com/ckparse/?url=">nepian【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.ou522.cn/t2/1.php?url=">ou522【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://api.wlzhan.com/sudu/?url=">wlzhan【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://api.baiyug.cn/vip/index.php?url=">baiyug【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://aikan-tv.com/?url=">aikan-tv【推荐】【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.chepeijian.cn/jiexi/vip.php?url=">chepeijian【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.82190555.com/video.php?url=">82190555【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://api.pucms.com/index.php?url=">pucms【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.sfsft.com/video.php?url=">sfsft【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.dgua.xyz/webcloud/?url=">dgua【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://api.91exp.com/svip/?url=">91exp【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://jiexi.071811.cc/jx.php?url=">0718112【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://jiexi.92fz.cn/player/vip.php?url=">92fz【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://www.82190555.com/index/qqvod.php?url=">82190555qq【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://api.97kn.com/?url=">97kn【优酷、爱奇艺、腾讯】</option>
+                    <option value="http://qtzr.net/s/?qt=">qtzr【优酷、爱奇艺】</option>
+                    <option value="http://player.jidiaose.com/supapi/iframe.php?v=">jidiaose【优酷、爱奇艺】</option>
+                    <option value="http://www.97panda.com/kkflv/index.php?url=">97panda【优酷、爱奇艺】</option>
+                    <option value="http://jx.ck921.com/?url=">ck921【优酷、爱奇艺】</option>
+                    <option value="http://lookxw.com/yingzi/?url=">lookxw【优酷、爱奇艺】</option>
+                    <option value="https://api.vparse.org/?skin=47ks&amp;url=">vparse【优酷、腾讯】</option>
+                    <option value="http://api.xfsub.com/index.php?url=">xfsub【优酷、腾讯】</option>
+                    <option value="http://api.1008net.com/v.php?url=">1008net【优酷、腾讯】</option>
+                    <option value="http://jx.vgoodapi.com/jx.php?url=">vgoodapi【优酷、腾讯】</option>
+                    <option value="http://api.lequgirl.com/?url=">lequgirl【优酷、腾讯】</option>
+                    <option value="http://api.47ks.com/webcloud/?v=">47ks【爱奇艺】</option>
+                </select>
+            </div>
+            <div class="user-group input-group">
+                <span class="input-group-addon">vip视频网址:</span>
+                <input type="text" id="vip_movie_id" class="form-control" placeholder="请在此处粘贴视频网址">
+            </div>
+            <div class="user-group">
+                <button type="button" id="happy_id" class="btn btn-info btn-lg btn-block">嗨起来！！！</button>
+            </div>
+            <div class="user-text">
+                <p><strong>更换接口后请点击嗨起来！！！接口介绍:解析失败或提示视频被删除请更换接口。</strong></p>
+                <p><strong>有些接口高清，有些接口模糊，请用户自行测试。
+             <span class="hidden-sm hidden-xs smaller" style=""> 有需要可<button class="btn btn-warning btn-xs" id="scale_iframe">点此</button>将视频窗口减小至70%。</span>
+              <span class="enlarge" style="display: none">    <button class="btn btn-success btn-xs" id="recovery_iframe">点此</button>恢复原大小窗口 </span>
+                </strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center">
+    <p>好资源一起分享</p>
+    <p>Copyright © 2017 xmmrh</p>
+</footer>
+
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+
+
+</script>
+<script type="text/javascript" src="js/common.js"></script>
+</body>
+</html>
