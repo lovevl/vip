@@ -52,6 +52,7 @@ $(function () {
     with(window.location) {
         var vipaddr = search.substring(search.indexOf("=") + 1);
         if (vipaddr != null && vipaddr != '') {
+            $(".message").remove();
             user.iVip.removeAttr("placeholder").attr("value", vipaddr);
             user.iPlayer.attr("src", user.iInterface.eq(0).val() + vipaddr);
         }
