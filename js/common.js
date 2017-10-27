@@ -87,6 +87,7 @@ $(function () {
         });
         iFrameRec.on("click",function () {
             iDiv.style.height = iDivInitHeight+"px";
+            iDiv.style.backgroundColor = "black";
             iPlayer.attr({"width":"100%","height":iDivInitHeight+"px"});
             enlarge.hide();
             smaller.show();
