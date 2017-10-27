@@ -43,15 +43,19 @@ $(function () {
         }
     }
 
-    if(client().width < 992){
-        var height = Math.ceil(parseInt(getStyle(user.iDiv,"width"))*4.5/5);
-        user.iDiv.style.height = height+"px";
-        user.iDivInitHeight = height;
-    }
-    with(window.location){
-        var vipaddr = search.substring(search.indexOf("=")+1);
-        user.iVip.attr("value",vipaddr);
-        user.iPlayer.attr("src",user.iInterface.eq(0).val()+vipaddr);
+    // if(client().width < 992){
+    //     var height = Math.ceil(parseInt(getStyle(user.iDiv,"width"))*4.5/5);
+    //     console.log(getStyle(user.iDiv,"width")+height);
+    //     user.iDiv.style.height = height+"px";
+    //     user.iDivInitHeight = height;
+    // }
+    with(window.location) {
+        var vipaddr = search.substring(search.indexOf("=") + 1);
+        if (vipaddr != null && vipaddr != '') {
+
+            user.iVip.attr("value", vipaddr);
+            user.iPlayer.attr("src", user.iInterface.eq(0).val() + vipaddr);
+        }
     }
     with(user){
         iButton.on("click",function () {

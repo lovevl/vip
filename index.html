@@ -3,54 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>嘻嘻视频</title>
+    <title>嘻嘻视频，免vip看全网视频爱奇艺视频搜狐优酷生活大爆炸</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <style type="text/css">
-        body{
-            background: url("img/bg2.gif") repeat repeat;
-        }
-        @media (min-width: 992px) {
-            .player-i{
-                height: 550px;
-                /*margin-bottom: 20px;*/
-            }
-        }
-        .player-i{
-            background-color: white;
-            text-align: center;
-        }
-        .container-center{
-            margin: 0 auto;
-        }
-        h3{
-            margin-bottom: 20px;
-        }
-        /*.input-group-addon{*/
-            /*background-color: aqua;*/
-        /*}*/
-        .user-group{
-            margin-bottom: 15px;
-            margin-top: 15px;
-        }
-        footer{
-            margin-top: 20px;
-        }
-        footer p{
-            margin-bottom: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
 <div class="container user-title">
-    <h3 class="text-center">嘻嘻视频，免vip看全网视频</h3>
+    <h3 class="text-center">嘻嘻，免vip看全网视频</h3>
 </div>
-
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-lg-8 col-lg-offset-2 ">
             <div class="player-i" id="iframe_div">
-                <iframe id="iframe-player" src="" frameborder="0"
+                <span class="message text-center"><strong>URL地址不能为空！！！</strong></span>
+                <iframe style="display: none;" id="iframe-player" src="" frameborder="0"
                 height="100%" width="100%" scrolling="no"
                 ></iframe>
                 <!--<iframe id="iframe-player"  src="https://www.baidu.com/" frameborder="0"-->
@@ -61,36 +28,39 @@
             <div class="input-group user-group">
                 <span class="input-group-addon span-select">更换接口:</span>
                 <select class="form-control selector" id="interface_id">
-                    <option value="http://000o.cc/jx/ty.php?url=" selected="">000o【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.wmxz.wang/video.php?url=">wmxz【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://2.jx.72du.com/video.php?url=">72du【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://jiexi.071811.cc/jx2.php?url=">071811【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://api.nepian.com/ckparse/?url=">nepian【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.ou522.cn/t2/1.php?url=">ou522【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://api.wlzhan.com/sudu/?url=">wlzhan【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://api.baiyug.cn/vip/index.php?url=">baiyug【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://aikan-tv.com/?url=">aikan-tv【推荐】【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.chepeijian.cn/jiexi/vip.php?url=">chepeijian【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.82190555.com/video.php?url=">82190555【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://api.pucms.com/index.php?url=">pucms【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.sfsft.com/video.php?url=">sfsft【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.dgua.xyz/webcloud/?url=">dgua【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://api.91exp.com/svip/?url=">91exp【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://jiexi.071811.cc/jx.php?url=">0718112【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://jiexi.92fz.cn/player/vip.php?url=">92fz【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://www.82190555.com/index/qqvod.php?url=">82190555qq【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://api.97kn.com/?url=">97kn【优酷、爱奇艺、腾讯】</option>
-                    <option value="http://qtzr.net/s/?qt=">qtzr【优酷、爱奇艺】</option>
-                    <option value="http://player.jidiaose.com/supapi/iframe.php?v=">jidiaose【优酷、爱奇艺】</option>
-                    <option value="http://www.97panda.com/kkflv/index.php?url=">97panda【优酷、爱奇艺】</option>
-                    <option value="http://jx.ck921.com/?url=">ck921【优酷、爱奇艺】</option>
-                    <option value="http://lookxw.com/yingzi/?url=">lookxw【优酷、爱奇艺】</option>
-                    <option value="https://api.vparse.org/?skin=47ks&amp;url=">vparse【优酷、腾讯】</option>
-                    <option value="http://api.xfsub.com/index.php?url=">xfsub【优酷、腾讯】</option>
-                    <option value="http://api.1008net.com/v.php?url=">1008net【优酷、腾讯】</option>
-                    <option value="http://jx.vgoodapi.com/jx.php?url=">vgoodapi【优酷、腾讯】</option>
-                    <option value="http://api.lequgirl.com/?url=">lequgirl【优酷、腾讯】</option>
-                    <option value="http://api.47ks.com/webcloud/?v=">47ks【爱奇艺】</option>
+                    <option value="http://api.47ks.com/webcloud/?v=" selected="">47ks 【推荐】</option>
+                    <option value="http://000o.cc/jx/ty.php?url=" >000o【推荐】</option>
+                    <option value="http://www.wmxz.wang/video.php?url=">wmxz【推荐】</option>
+                    <option value="http://2.jx.72du.com/video.php?url=">72du【推荐】</option>
+                    <option value="http://jiexi.071811.cc/jx2.php?url=">071811【推荐】</option>
+                    <option value="http://api.nepian.com/ckparse/?url=">nepian【推荐】</option>
+                    <option value="http://www.ou522.cn/t2/1.php?url=">ou522【推荐】</option>
+                    <option value="http://api.wlzhan.com/sudu/?url=">wlzhan【推荐】</option>
+                    <option value="http://api.baiyug.cn/vip/index.php?url=">baiyug【推荐】</option>
+                    <option value="http://aikan-tv.com/?url=">aikan-tv</option>
+                    <option value="http://www.chepeijian.cn/jiexi/vip.php?url=">chepeijian</option>
+                    <option value="http://www.82190555.com/video.php?url=">82190555</option>
+                    <option value="http://api.pucms.com/index.php?url=">pucms</option>
+                    <option value="http://www.sfsft.com/video.php?url=">sfsft</option>
+                    <option value="http://www.dgua.xyz/webcloud/?url=">dgua</option>
+                    <option value="http://api.91exp.com/svip/?url=">91exp</option>
+                    <option value="http://jiexi.071811.cc/jx.php?url=">0718112【不推荐】</option>
+                    <option value="http://jiexi.92fz.cn/player/vip.php?url=">92fz</option>
+                    <option value="http://www.82190555.com/index/qqvod.php?url=">82190555qq</option>
+                    <option value="http://api.97kn.com/?url=">97kn</option>
+                    <option value="http://qtzr.net/s/?qt=">qtzr</option>
+                    <option value="http://player.jidiaose.com/supapi/iframe.php?v=">jidiaose</option>
+                    <option value="http://www.97panda.com/kkflv/index.php?url=">97panda</option>
+                    <option value="http://jx.ck921.com/?url=">ck921</option>
+                    <option value="http://lookxw.com/yingzi/?url=">lookxw</option>
+                    <option value="https://api.vparse.org/?skin=47ks&amp;url=">vparse</option>
+                    <option value="http://api.xfsub.com/index.php?url=">xfsub</option>
+                    <option value="http://api.1008net.com/v.php?url=">1008net</option>
+                    <option value="http://jx.vgoodapi.com/jx.php?url=">vgoodapi</option>
+                    <option value="http://api.lequgirl.com/?url=">lequgirl</option>
+
+                    <option value="http://pupudy.com/url3.php?url=">pupudy【推荐】搜狐高清</option>
+                    <option value="http://api.pu.tn/qq1/?url=">pu【网速较慢】</option>
                 </select>
             </div>
             <div class="user-group input-group">
