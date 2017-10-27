@@ -6,20 +6,26 @@ body{
         height: 550px;
     }
 }
+@media (max-width: 992px) {
+    div.user-xs{
+        margin-top: 50px;
+    }
+    .hidden-iframe-ad{
+        position: absolute;
+        bottom: 0;
+        height: 60px;
+        width: 100%;
+        z-index: 999;
+    }
+}
 @media (min-width: 768px) and (max-width: 992px) {
     .player-i{
         height: 430px;
-    }
-    div.user-xs{
-        margin-top: 50px;
     }
 }
 @media (max-width: 768px) {
     .player-i{
         height: 340px;
-    }
-    div.user-xs{
-        margin-top: 50px;
     }
 }
 .player-i{
