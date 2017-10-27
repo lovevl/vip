@@ -41,8 +41,16 @@ $(function () {
         iHappyfn : function (a,b,c) {
             a.attr("src",b.val()+c.val());
         },
-        removeMsg : function (a) {
-            if(a)a.remove();
+        removeMsg : function (a,b) {
+            if(b == undefined ){
+                a.hide();
+            }else if(b.val() != null && b.val() != ""){
+                a.hide();
+            }else{
+                a.show();
+                return false;
+            }
+            return true;
         }
     }
 
@@ -62,8 +70,9 @@ $(function () {
     }
     with(user){
         iButton.on("click",function () {
-            removeMsg(msg);
-            iHappyfn(iPlayer,iInterface,iVip);
+            if(removeMsg(msg,iVip)){
+                iHappyfn(iPlayer,iInterface,iVip);
+            }
         });
         iFramescale.on("click",function () {
             var height = iDivInitHeight*0.7;
