@@ -1,23 +1,28 @@
 body{
     background: url("../img/bg2.gif") repeat repeat;
 }
-/*@media (min-width: 992px) {*/
-    /*.player-i{*/
-        /*height: 550px;*/
-    /*}*/
-/*}*/
-/*@media (min-width: 768px) and (max-width: 992px) {*/
-    /*.player-i{*/
-        /*height: 430px;*/
-    /*}*/
-/*}*/
-/*@media (max-width: 768px) {*/
-    /*.player-i{*/
-        /*height: 340px;*/
-    /*}*/
-/*}*/
+@media (min-width: 992px) {
+    .player-i{
+        height: 550px;
+    }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .player-i{
+        height: 430px;
+    }
+    .user-xs{
+        margin-top: 50px;
+    }
+}
+@media (max-width: 768px) {
+    .player-i{
+        height: 340px;
+    }
+    .user-xs{
+        margin-top: 50px;
+    }
+}
 .player-i{
-    height: 550px;
     position: relative;
     background-color: black;
     text-align: center;
