@@ -6,12 +6,12 @@ body{
         height: 550px;
     }
 }
-@media (min-height: 768px) {
+@media (min-width: 768px) and (max-width: 992px) {
     .player-i{
         height: 430px;
     }
 }
-@media (max-height: 768px) {
+@media (max-width: 768px) {
     .player-i{
         height: 340px;
     }
