@@ -10,7 +10,7 @@ body{
     .player-i{
         height: 430px;
     }
-    .user-xs{
+    div.user-xs{
         margin-top: 50px;
     }
 }
@@ -18,7 +18,7 @@ body{
     .player-i{
         height: 340px;
     }
-    .user-xs{
+    div.user-xs{
         margin-top: 50px;
     }
 }
