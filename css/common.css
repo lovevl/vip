@@ -61,6 +61,13 @@ h3{
 .textIndent-4{
     text-indent: 5em;
 }
+.about{
+    line-height: 1.428571;
+    border-left: solid 3px #e41c1e;
+    padding-left: 10px;
+    color: #666;
+    font-size: 12px;
+}
 footer{
     margin-top: 20px;
 }
