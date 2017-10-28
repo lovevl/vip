@@ -7,18 +7,17 @@ body{
     }
 }
 @media (max-width: 992px) {
-    div.user-xs{
-        margin-top: 50px;
-    }
-    .hidden-iframe{
-        position: absolute;
-        background: url("../img/bg2.gif") repeat repeat;
-        width: 100%;
-        z-index: 990;
-        bottom: -190px;
-        height: 195px;
-    }
-
+    /*div.user-xs{*/
+        /*margin-top: 50px;*/
+    /*}*/
+    /*.hidden-iframe{*/
+        /*position: absolute;*/
+        /*background: url("../img/bg2.gif") repeat repeat;*/
+        /*width: 100%;*/
+        /*z-index: 990;*/
+        /*bottom: -190px;*/
+        /*height: 195px;*/
+    /*}*/
 }
 @media (min-width: 768px) and (max-width: 992px) {
     .player-i{
@@ -34,6 +33,7 @@ body{
     position: relative;
     background-color: black;
     text-align: center;
+    padding: 1px;
 }
 .message{
     display: block;
@@ -52,10 +52,10 @@ h3{
     margin-bottom: 20px;
 }
 .user-group{
-    position: relative;
+    /*position: relative;*/
     margin-bottom: 15px;
     margin-top: 15px;
-    z-index: 999;
+    /*z-index: 999;*/
 }
 footer{
     margin-top: 20px;
