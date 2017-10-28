@@ -78,8 +78,8 @@ $(function () {
             var height = iDivInitHeight*0.7;
             var width = Math.ceil(parseInt(getStyle(iDiv,"width"))*0.7);
             console.log(height+'==='+iDivInitHeight);
+            iDiv.style.width = width + "px";
             iDiv.style.height = height + "px";
-            iDiv.style.backgroundColor = "transparent";
             iPlayer.attr({"width":width+"px","height":height+"px"});
             window.scrollTo(0,0);
             smaller.hide();
@@ -87,7 +87,7 @@ $(function () {
         });
         iFrameRec.on("click",function () {
             iDiv.style.height = iDivInitHeight+"px";
-            iDiv.style.backgroundColor = "black";
+            iDiv.style.width = "100%";
             iPlayer.attr({"width":"100%","height":iDivInitHeight+"px"});
             enlarge.hide();
             smaller.show();
