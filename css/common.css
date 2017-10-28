@@ -15,6 +15,7 @@ body{
         background: url("../img/bg2.gif") repeat repeat;
         width: 105%;
         z-index: 990;
+        left:-6px;
         bottom: -190px;
         height: 195px;
     }
