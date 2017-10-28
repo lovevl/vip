@@ -34,7 +34,6 @@ body{
     position: relative;
     background-color: black;
     text-align: center;
-    padding: 1px;
 }
 .message{
     display: block;
