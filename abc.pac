@@ -1,6 +1,6 @@
 // http://pac.immrh.com
 
-var proxy = "PROXY 35.199.67.156;";
+var proxy = "PROXY 35.199.67.156:25;";
 
 var domains = {
   "pinterest.com": 1,
