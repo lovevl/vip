@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test_box {
+            width: 500px;
+            min-height: 250px;
+            margin: 1em auto;
+            position: relative;
+        }
+        .test_tab {
+            width: 200px;
+            margin:5px;
+            border: 1px solid #ccc;
+            border-bottom: 0;
+            float: left;
+        }
+        .test_label {
+            display: block;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: #eee;
+            text-align: center;
+        }
+        .test_radio,
+        .test_tab_content {
+            position: absolute;
+            left: -999em;
+        }
+        .test_radio:checked ~ .test_tab_content {
+            margin-top: -1px;
+            padding: 1em 2em;
+            border: 1px solid #ccc;
+            left: 0;
+            right: 0;
+        }
+        .test_radio:checked ~ .test_label {
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+            position: relative;
+            z-index: 1;
+        }
+        .test-div{
+            position: relative;
+        }
+        .test-div:after{
+            position: absolute;
+            top: 0;
+            left:0;
+            content: "";
+            display: block;
+            border-bottom: 4px solid blue;
+            width: 5px;
+            height: 5px;
+            background-color: #449d44;
+        }
+        .border-div{
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style:solid;
+            border-color: transparent;
+            border-bottom-color: #449d44;
+        }
+        .border-div2{
+            width: 0;
+            height: 0;
+            border: 10px solid #e41c1e;
+        }
+
+    </style>
+</head>
+<body>
+<div class="border-div">
+
+</div>
+<div class="border-div2">
+
+</div>
+
+<div class="test-div">
+
+</div>
+
+
+<div class="test_box">
+    <div class="test_tab">
+        <input type="radio" id="testTabRadio1" class="test_radio" name="tab"  />
+        <label class="test_label" for="testTabRadio1">选项卡1</label>
+        <div class="test_tab_content">
+            <p>我是选项卡1对应的美女</p>
+            <img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" />
+        </div>
+    </div>
+    <div class="test_tab">
+        <input type="radio" id="testTabRadio2" class="test_radio" name="tab" />
+        <label class="test_label" for="testTabRadio2">选项卡2</label>
+        <div class="test_tab_content">
+            <p>我是选项卡2对应的美女</p>
+            <img src="http://image.zhangxinxu.com/image/study/s/s128/mm2.jpg" />
+        </div>
+    </div>
+    <div class="test_tab" >
+        <input type="radio" id="testTabRadio3" class="test_radio" name="tab" checked="checked"/>
+        <label class="test_label" for="testTabRadio3">选项卡3</label>
+        <div class="test_tab_content" >
+            <p>我是选项卡3对应的美女</p>
+            <img src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" />
+        </div>
+
+    </div>
+    <div class="test_tab">
+        <input type="radio" id="testTabRadio4" class="test_radio" name="tab" />
+        <label class="test_label" for="testTabRadio4">选项卡3</label>
+        <div class="test_tab_content">
+            <p>我是选项卡3对应的美女</p>
+            <img src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" />
+        </div>
+    </div>
+    <div class="test_tab">
+        <input type="radio" id="testTabRadio5" class="test_radio" name="tab" />
+        <label class="test_label" for="testTabRadio5">选项卡3</label>
+        <div class="test_tab_content">
+            <p>我是选项卡3对应的美女</p>
+            <img src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" />
+        </div>
+    </div>
+    <div class="test_tab">
+        <input type="radio" id="testTabRadio6" class="test_radio" name="tab" />
+        <label class="test_label" for="testTabRadio6">选项卡3</label>
+        <div class="test_tab_content">
+            <p>我是选项卡3对应的美女</p>
+            <img src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" />
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>嘻嘻视频，免vip看全网视频爱奇艺视频搜狐优酷生活大爆炸</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/common.css">
+    <style type="text/css">
+
+    </style>
+    <style id="content_id" type="text/css"></style>
+    <style id='style_id' type="text/css"></style>
+    <style id='enheight_id' type="text/css"></style>
 </head>
 <body>
 <div class="container user-title">
@@ -14,27 +21,41 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-lg-8 col-lg-offset-2 ">
+        <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 user-all">
             <div class="player-i" id="iframe_div">
                 <span class="message text-center"><strong>URL地址不能为空！！！</strong></span>
                 <iframe id="iframe-player" src="" frameborder="0"
-                height="100%" width="100%" scrolling="no"
+                        height="100%" width="100%" scrolling="no" data-url=""
                 ></iframe>
                 <div class="hidden-iframe ad-55"></div>
             </div>
 
-            <div class="user-xs input-group user-group">
+            <div class="tv-title">
+                <p>电视剧:</p>
+            </div>
+            <div class="list-box">
+                <ul class="v-list " id="v_list">
+                </ul>
+            </div>
+
+            <div class="need-new">
+                <p class="tell-me">想看的电视或电影希望出现在这里？免去复制粘贴的麻烦？<a href="#sendme">划到最下方</a>
+                </p>
+            </div>
+            <div class="user-xs input-group user-group margin-top-5">
                 <span class="input-group-addon span-select">更换接口:</span>
                 <select class="form-control selector" id="interface_id">
                     <option value="http://api.47ks.com/webcloud/?v=" selected="">47ks 【推荐】</option>
-                    <option value="http://000o.cc/jx/ty.php?url=" >000o【推荐】</option>
+                    <option value="http://000o.cc/jx/ty.php?url=">000o【推荐】</option>
                     <option value="http://www.wmxz.wang/video.php?url=">wmxz【推荐】</option>
                     <option value="http://2.jx.72du.com/video.php?url=">72du【推荐】</option>
                     <option value="http://jiexi.071811.cc/jx2.php?url=">071811【推荐】</option>
                     <option value="http://api.nepian.com/ckparse/?url=">nepian【推荐】</option>
                     <option value="http://www.ou522.cn/t2/1.php?url=">ou522【推荐】</option>
                     <option value="http://api.wlzhan.com/sudu/?url=">wlzhan【推荐】</option>
-                    <option value="http://api.baiyug.cn/vip/index.php?url=">baiyug【推荐】</option>
+                    <option value="http://api.baiyug.cn/vip/index.php?url=">baiyug【推荐】腾讯高清</option>
+                    <option value="http://pupudy.com/url.php?url=">pupudy1【推荐】腾讯高清</option>
+                    <option value="http://pupudy.com/url3.php?url=">pupudy2【推荐】搜狐高清</option>
                     <option value="http://aikan-tv.com/?url=">aikan-tv</option>
                     <option value="http://www.chepeijian.cn/jiexi/vip.php?url=">chepeijian</option>
                     <option value="http://www.82190555.com/video.php?url=">82190555</option>
@@ -56,8 +77,6 @@
                     <option value="http://api.1008net.com/v.php?url=">1008net</option>
                     <option value="http://jx.vgoodapi.com/jx.php?url=">vgoodapi</option>
                     <option value="http://api.lequgirl.com/?url=">lequgirl</option>
-                    <option value="http://pupudy.com/url.php?url=">pupudy1【推荐】腾讯高清</option>
-                    <option value="http://pupudy.com/url3.php?url=">pupudy2【推荐】搜狐高清</option>
                     <option value="http://api.pu.tn/qq1/?url=">pu【网速较慢】</option>
                 </select>
             </div>
@@ -70,13 +89,16 @@
             </div>
             <div class="user-text">
                 <p><strong>使用方法：一. 在浏览器端（电脑，手机均可观看）打开视频网站（优酷，爱奇艺，腾讯等），查找你要观看的视频</strong></p>
-                <p class="textIndent-4"><strong >二. 将视频网址复制，然后返回这里粘贴视频网址。嗨起来！！！</strong></p>
+                <p class="textIndent-4"><strong>二. 将视频网址复制，然后返回这里粘贴视频网址。嗨起来！！！</strong></p>
                 <p><strong>更换接口后请点击嗨起来！！！接口介绍:解析失败或提示视频被删除请更换接口。</strong></p>
                 <p><strong>有些接口高清，有些接口模糊，请用户自行测试。
-              <span class="hidden-sm hidden-xs smaller" style=""> 有需要可<button class="btn btn-warning btn-xs" id="scale_iframe">点此</button>将视频窗口减小至70%。</span>
-              <span class="enlarge" style="display: none">    <button class="btn btn-success btn-xs" id="recovery_iframe">点此</button>恢复原大小窗口 </span>
+                    <span class="hidden-sm hidden-xs smaller" style=""> 有需要可<button class="btn btn-warning btn-xs"
+                                                                                    id="scale_iframe">点此</button>将视频窗口减小至70%。</span>
+                    <span class="enlarge" style="display: none">    <button class="btn btn-danger btn-xs"
+                                                                            id="recovery_iframe">点此</button>恢复原大小窗口 </span>
                 </strong></p>
-                <p class="about">网站有问题？接口不能用？视频不能看？或者有任何建议，请发邮件至 xmmrhmm@gmail.com</p>
+                <p class="about" id="sendme">编辑电视或者电影名字（若有网址请一起提供）发邮件至 xmmrhmm@gmail.com 24小时内添加并显示
+                </p>
             </div>
         </div>
     </div>
@@ -93,12 +115,23 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-
+<script src="js/common.js"></script>
 <script type="text/javascript">
-
-
+//    $.ajax({
+//        url:"http://localhost:8089/xmmrh/v/saveit.jspx",
+//        data:{url:"https://v.qq.com/x/cover/z9ycvdktwg8oc45/x00233kjfbo.html"},
+//        type:"POST",
+//        // contentType : "application/json;charset=utf-8",
+//        success:function (data) {
+//            if(data.status == "success"){
+//                alert("成功");
+//            }
+//        },
+//        error:function () {
+//            alert("获取列表错误");
+//        }
+//    });
 
 </script>
-<script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>
