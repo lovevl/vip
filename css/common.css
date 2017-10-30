@@ -17,7 +17,7 @@ body{
         z-index: 990;
         left:-6px;
         bottom: -190px;
-        height: 195px;
+        height: 400px;
     }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -173,6 +173,10 @@ ul.v-list{
 .user-group.margin-top-5{
     margin-top: 0;
 }
+.user-text{
+    position: relative;
+    z-index: 999;
+}
 .textIndent-4{
     text-indent: 5em;
 }
@@ -190,6 +194,8 @@ ul.v-list{
     padding-left: 5px;
 }
 footer{
+    position: relative;
+    z-index: 999;
     margin-top: 20px;
 }
 footer p{
