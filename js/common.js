@@ -41,10 +41,10 @@ $(function () {
         msg : $('.message'),
         iHappyfn : function (a,b,c) {
             var watchUrl = c.data("url");
-            if(watchUrl != null && watchUrl != ""){
-                a.attr({"src":b.val()+watchUrl,"data-url":b.val()});
-            }else{
+            if(c.val() != null && c.val() != ""){
                 a.attr({"src":b.val()+c.val(),"data-url":b.val()});
+            }else{
+                a.attr({"src":b.val()+watchUrl,"data-url":b.val()});
             }
         },
         removeMsg : function (a,b) {
