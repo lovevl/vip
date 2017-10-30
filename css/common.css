@@ -85,7 +85,7 @@ ul.v-list{
     position: absolute;
     z-index: 998;
     top:35px;
-    left: 0;
+    left: 5px;
     width: 100%;
     padding: 0 15px 10px 15px;
     border:1px solid #aa72d2;
