@@ -98,7 +98,7 @@ $(function () {
     };
 
     $.ajax({
-        url:"http://localhost:8089/xmmrh/v/getSe.json",
+        url:"http://117.48.204.110/xmmrh/v/getSe.json",
         data:{name:null},
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -108,7 +108,7 @@ $(function () {
             }
         },
         error:function () {
-            alert("获取列表错误");
+            console.log("获取列表错误");
         }
     });
 });
