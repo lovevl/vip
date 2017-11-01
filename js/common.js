@@ -146,7 +146,7 @@ $(function () {
     };
 
     $.ajax({
-        url:"http://127.0.0.1:8089/xmmrh/v/getSe.json",
+        url:"http://117.48.204.110/xmmrh/v/getSe.json",
         data:{name:null},
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -161,7 +161,7 @@ $(function () {
     });
 
     $.ajax({
-        url:"http://127.0.0.1:8089/xmmrh/v/getM.json",
+        url:"http://117.48.204.110/xmmrh/v/getM.json",
         data:{name:null},
         type:"POST",
         // contentType : "application/json;charset=utf-8",

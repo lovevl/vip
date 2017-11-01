@@ -9,7 +9,7 @@ function preventDefault() {
 function initTypes(typeNames) {
     console.log(typeNames);
     $.ajax({
-        url:"http://127.0.0.1:8089/xmmrh/dict/initType.json",
+        url:"http://117.48.204.110/xmmrh/dict/initType.json",
         async :false,
         type:"POST",
         data:{typeNames:typeNames},
