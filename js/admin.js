@@ -1,10 +1,10 @@
 $(function () {
     url = {
         dictUrl : {
-            delete : "http://127.0.0.1:8089/xmmrh/dict/deleteit.json",
-            save : "http://127.0.0.1:8089/xmmrh/dict/saveit.json",
-            selOnchange : "http://127.0.0.1:8089/xmmrh/dict/getT.json",
-            types: "http://127.0.0.1:8089/xmmrh/dict/types.json"
+            delete : "http://117.48.204.110/xmmrh/dict/deleteit.json",
+            save : "http://117.48.204.110/xmmrh/dict/saveit.json",
+            selOnchange : "http://117.48.204.110/xmmrh/dict/getT.json",
+            types: "http://117.48.204.110/xmmrh/dict/types.json"
         }
     };
     $.ajax({
