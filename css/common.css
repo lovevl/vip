@@ -65,17 +65,15 @@ ul{
     flex-wrap:wrap;
     justify-content: flex-start;
 }
-ul.common-list{
-    width: 100%;
-}
 li{
     margin:5px;
 }
 
 /*标题列表*/
 ul.common-list{
+    width: 100%;
     position: relative;
-    z-index: 999;
+    z-index: 998;
 }
 .content{
     display: none;
@@ -91,9 +89,8 @@ ul.common-list{
     border:1px solid #aa72d2;
     background-color: #fff;
 }
-.v-list>.active button{
+.v-list button{
     position: relative;
-    z-index: 999;
 }
 .v-list>.active button:after{
     position: absolute;
