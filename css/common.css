@@ -75,7 +75,7 @@ li{
 /*标题列表*/
 ul.common-list{
     position: relative;
-    z-index: 998;
+    z-index: 999;
 }
 .content{
     display: none;
@@ -93,6 +93,7 @@ ul.common-list{
 }
 .v-list>.active button{
     position: relative;
+    z-index: 999;
 }
 .v-list>.active button:after{
     position: absolute;
