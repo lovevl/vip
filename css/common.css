@@ -145,6 +145,9 @@ ul.common-list{
 .recent-watch{
     padding: 5px;
 }
+.recent-watch p span:not(:first-child){
+    padding-right: 10px;
+}
 .tv-title p ,.movie-title p{
     color: #ec971f;
 }
