@@ -28,6 +28,7 @@ function client() {
 $(function () {
     user = {
         iDiv : document.getElementById("iframe_div"),
+        $recentBox : $("#recent_box"),
         $head : $("head"),
         iDivInitHeight : 550,
         iFramescale : $("#scale_iframe"),
@@ -59,10 +60,57 @@ $(function () {
                 return false;
             }
             return true;
+        },
+        setCookie : function (a,b,c) {
+
+            //储存格式: localStorage.recentR = {l:[{},{},{},{},{}]};5个对象
+            //每个对象储存格式：{name:"name",url:"url",counts:"counts"}
+            if(window.localStorage && a && b){
+                var v = {l:[]};
+                if(localStorage.recentR){
+                    v = JSON.parse(localStorage.recentR);
+                    if(v.l.length>=5){
+                        v.l.pop();
+                    }
+                }
+                for(var i in v.l){
+                    if(v.l[i].name == a){
+                        v.l.splice(i,1);
+                    }
+                }
+                if(c){
+                    v.l.unshift({name:a,url:b,counts:c});
+                }else{
+                    v.l.unshift({name:a,url:b});
+                }
+                localStorage.recentR = JSON.stringify(v);
+                user.showRecent();
+            }else if(window.localStorage && localStorage.recentR){
+                user.showRecent();
+            }
+        },
+        showRecent : function () {
+            var r = JSON.parse(localStorage.recentR);
+            user.$recentBox.show();
+            var $p = user.$recentBox.find('p');
+            $p.find("span:gt(0)").remove();
+            for(var i in r.l){
+                var $span,$a;
+                if(r.l[i].counts){
+                    $span = $('<span></span>');
+                    $a = $('<a href="#" onclick="startRecentPlay(this);" data-recent="'+r.l[i].url+'">'+r.l[i].name+'第'+r.l[i].counts+'集</a>');
+                }else{
+                    $span = $('<span></span>');
+                    $a = $('<a href="#" onclick="startRecentPlay(this);" data-recent="'+r.l[i].url+'">'+r.l[i].name+'</a>');
+                }
+                $span.append($a);
+                $p.append($span);
+            }
         }
     };
     var width = parseInt(getStyle(document.getElementById('v_list'),"width"))-10;
     $("#content_id").text('.active .content{width: '+width+'px;}');
+    user.setCookie();
     with(window.location) {
         var vipaddr = search.substring(search.indexOf("=") + 1);
         if (vipaddr != null && vipaddr != '') {
@@ -98,7 +146,7 @@ $(function () {
     };
 
     $.ajax({
-        url:"http://117.48.204.110/xmmrh/v/getSe.json",
+        url:"http://127.0.0.1:8089/xmmrh/v/getSe.json",
         data:{name:null},
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -111,10 +159,29 @@ $(function () {
             console.log("获取列表错误");
         }
     });
+
+    $.ajax({
+        url:"http://127.0.0.1:8089/xmmrh/v/getM.json",
+        data:{name:null},
+        type:"POST",
+        // contentType : "application/json;charset=utf-8",
+        success:function (data) {
+            if(data.status == "success"){
+                listMovie(data.data);
+            }
+        },
+        error:function () {
+            console.log("获取列表错误");
+        }
+    });
+
+
 });
 
 userParam = {
-    $vList : $(".v-list"),
+    $vList : $("#v_list"),
+    $mList : $("#mo_v_list"),
+    $commonList : $(".common-list"),
     color : ['#f56293','#aa72d2','#0dc3ce','#97b921','#f56293','#b58571','#52a0ea'],
     $style : $('#style_id'),
     $enHeiStyle : $("#enheight_id"),
@@ -146,10 +213,16 @@ listEposide = function (obj) {
         userParam.$enHeiStyle.text('.active .enheight{height:'+(height+userParam.enheightInit)+'px;}');
     }
 };
-startPlayer = function (url,obj) {
+startPlayer = function (url,obj,m) {
     var $obj = $(obj);
-    $(obj).parent().siblings('li').removeClass('active');
-    $(obj).parent().addClass("active");
+    if(m){
+        userParam.$vList.find('li').removeClass('active');
+        userParam.$enHeiStyle.text('');
+    }else{
+        userParam.$mList.find('li').removeClass('active');
+        $obj.parent().siblings().removeClass('active');
+    }
+    $obj.parent().addClass("active");
     user.removeMsg(user.msg);
     var iUrl = user.iPlayer.data('url');
     if(iUrl != undefined && iUrl != "") {
@@ -157,9 +230,17 @@ startPlayer = function (url,obj) {
     }else{
         user.iPlayer.attr("src", user.iInterface.val() + url);
     }
-    user.iVip.attr({"placeholder":"你正在观看>>>"+$obj.data('name')+"第"+$obj.data('episode')+"集",
-        "data-url":url
-    });
+    if(m){
+        user.iVip.attr({"placeholder":"你正在观看>>>"+$obj.data('name'),
+            "data-url":url
+        });
+        user.setCookie($obj.data('name'),url);
+    }else{
+        user.iVip.attr({"placeholder":"正在观看:"+$obj.data('name')+"第"+$obj.data('episode')+"集",
+            "data-url":url
+        });
+        user.setCookie($obj.data('name'),url,$obj.data('episode'));
+    }
 };
 listContent = function (array) {
     for(var i = 0; i < array.length; i++){
@@ -188,12 +269,24 @@ listContent = function (array) {
             $content.append($span).append($c_ul);
             $li.append($content).append($en);
         }
-        $(".v-list").append($li);
+        userParam.$vList.append($li);
         var offsetTop = $btn[0].offsetTop;
         $btn.attr("data-top",offsetTop);
     }
 };
 
-
+listMovie = function (array) {
+    if(array){
+        for(var i = 0; i < array.length; i++) {
+            var $li = $('<li></li>');
+            var $btn = $('<button data-name="'+array[i].name +'" class="btn btn-success btn-xs" '+
+                'onclick="startPlayer(\''+array[i].url+'\',this,\'m\')">' + array[i].name + '</button>');
+            $li.append($btn);
+            userParam.$mList.append($li);
+        }
+        var offsetTop = $btn[0].offsetTop;
+        $btn.attr("data-top",offsetTop);
+    }
+}
 
 

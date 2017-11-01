@@ -13,22 +13,51 @@
         .row h4{
             color: #5bc0de;
         }
+        .box-bottom{
+            margin-bottom: 10px;
+        }
+        .dict-sel{
+            display: inline-block;
+            width: 40%;
+        }
+        .add-sel{
+            display: inline-block;
+            width: 20%;
+            height: 26px;
+        }
+
     </style>
 </head>
 <body>
+<!--<div class="dialog-box">-->
+    <!--<div class="dislog">-->
+        <!--<p>这个数据库已存在，是否强制更新</p>-->
+    <!--</div>-->
 
+<!--</div>-->
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
             <h4>只需一个url，添加一整部电视剧:</h4>
-            <form method="post" action="" onsubmit="submit(this);">
+            <form method="post" action="http://127.0.0.1:8089/xmmrh/v/saveit.jspx" onsubmit="submitit(this);">
+                <input type="hidden" id="forceUpId" name="forceUp" value="false">
+                <div class="box-bottom">
+                    <span><strong>视频来源：</strong></span>
+                    <select name="websiteType" class="form-control add-sel" id="websiteTId">
+                    </select>
+                    <span><strong>视频类型：</strong></span>
+                    <select name="watchType" class="form-control add-sel">
+                        <option value="2" selected="">除电影之外</option>
+                        <option value="1">电影</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label >视频播放地址:</label>
-                    <input name="url" type="text" class="form-control"  placeholder="URL地址">
+                    <input id="urlNameId" name="url" type="text" class="form-control"  placeholder="URL地址">
                 </div>
-                <button type="submit" class="btn btn-default">提交</button>
+                <button type="submit"  class="btn btn-default btn-success">提交</button>
             </form>
 
 
@@ -37,21 +66,45 @@
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
+            <h4>字典库列表</h4>
+
+            <div class="box-bottom">
+                <span><strong>类型：</strong></span>
+                <select class="form-control dict-sel" name="type" id="list_types" onchange="getDetail(this);">
+
+                </select>
+            </div>
+
+            <table class="table table-bordered" id="type_table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <td>value值</td>
+                        <td>name值</td>
+                        <td>type值</td>
+                        <td>删除？</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
             <h4>添加字典库</h4>
-            <form class="form-inline">
+            <form class="form-inline" method="post" onsubmit="submitDict(this);">
                 <div class="form-group">
                     <label for="inputValue1">值：</label>
-                    <input type="text" class="form-control" id="inputValue1"
+                    <input type="text" class="form-control waitdel" id="inputValue1" name="value"
                            onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"
                            placeholder="数值">
                 </div>
                 <div class="form-group">
                     <label for="inputName1">名称：</label>
-                    <input type="email" class="form-control" id="inputName1" placeholder="显示的名称">
+                    <input type="text" class="form-control waitdel" name="name" id="inputName1" placeholder="显示的名称">
                 </div>
                 <div class="form-group">
                     <label for="inputType1">类型：</label>
-                    <input type="email" class="form-control" id="inputType1" placeholder="类型，英文">
+                    <input type="text" class="form-control" name="type" id="inputType1" placeholder="类型，英文">
                 </div>
                 <button type="submit" class="btn btn-sm btn-success">提交</button>
             </form>
@@ -71,25 +124,17 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 <script src="js/base.js"></script>
+<script src="js/admin.js"></script>
 <script>
-    submit = function (obj) {
-        $.ajax({
-            url:obj.action,
-            data:$(obj).serialize(),
-            type:"POST",
-            // contentType : "application/json;charset=utf-8",
-            success:function (data) {
-                if(data.status == "success"){
-                    alert("成功");
-                }else{
-                    alert(data.message);
-                }
-            },
-            error:function () {
-                alert("获取列表错误");
-            }
-        });
-        preventDefault();
+
+    initTypes("websiteType");
+    if(window._typesMap){
+        var map = window._typesMap["websiteType"];
+        var $sel = $("#websiteTId");
+        for(var val in map){
+            var $op = $('<option value="'+val+'">'+map[val]+'</option>');
+            $sel.append($op);
+        }
     }
 
 

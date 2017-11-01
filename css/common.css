@@ -58,13 +58,14 @@ h3{
     /*width: 100%;*/
 }
 ul{
+    margin-bottom: 0;
     padding: 0;
     list-style: none;
     display: flex;
     flex-wrap:wrap;
     justify-content: flex-start;
 }
-ul.v-list{
+ul.common-list{
     width: 100%;
 }
 li{
@@ -72,10 +73,9 @@ li{
 }
 
 /*标题列表*/
-ul.v-list{
+ul.common-list{
     position: relative;
     z-index: 998;
-    margin-bottom: 5px;
 }
 .content{
     display: none;
@@ -132,18 +132,24 @@ ul.v-list{
 }
 /*标题列表end*/
 
-.tv-title {
-    position: relative;
-    z-index: 999;
-    margin: 10px 5px 0 5px;
-
-}
-.tv-title p {
+.common-margin{
     margin: 0;
     font-size: 12px;
+    line-height: 14px;
+}
+.tv-title,.movie-title,.recent-watch{
+    position: relative;
+    z-index: 999;
+    padding-left: 5px;
+}
+.recent-watch{
+    padding: 5px;
+}
+.tv-title p ,.movie-title p{
     color: #ec971f;
 }
 .need-new {
+    padding-left: 5px;
     position: relative;
     z-index: 999;
 }
@@ -180,7 +186,7 @@ ul.v-list{
 .textIndent-4{
     text-indent: 5em;
 }
-.about, .tell-me{
+.about, .tell-me,.recent-watch p{
     line-height: 1.428571;
     color: #666;
     font-size: 12px;
@@ -189,9 +195,6 @@ ul.v-list{
     position: relative;
     border-left: solid 3px #e41c1e;
     padding-left: 10px;
-}
-.tell-me{
-    padding-left: 5px;
 }
 footer{
     position: relative;
