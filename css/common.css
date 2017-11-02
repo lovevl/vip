@@ -91,6 +91,7 @@ ul.common-list{
 }
 .v-list button{
     position: relative;
+    z-index: 999;
 }
 .v-list>.active button:after{
     position: absolute;
@@ -161,10 +162,10 @@ ul.common-list{
     color: #666;
 }
 /*滑动的过渡动画*/
-.enheight{
-    height: 0;
-    transition: all 1s;
-}
+/*.enheight{*/
+    /*height: 0;*/
+    /*transition: all 0.8s;*/
+/*}*/
 
 .active button.btn-success{
     color: #fff;
