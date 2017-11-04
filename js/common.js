@@ -146,7 +146,7 @@ $(function () {
     };
 
     $.ajax({
-        url:"http://117.48.204.110/xmmrh/v/getSe.json",
+        url:"http://117.48.204.110/xmmrh/v/getRTV.json",
         data:{name:null},
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -161,7 +161,7 @@ $(function () {
     });
 
     $.ajax({
-        url:"http://117.48.204.110/xmmrh/v/getM.json",
+        url:"http://117.48.204.110/xmmrh/v/getRM.json",
         data:{name:null},
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -185,6 +185,7 @@ userParam = {
     color : ['#f56293','#aa72d2','#0dc3ce','#97b921','#f56293','#b58571','#52a0ea'],
     $style : $('#style_id'),
     $enHeiStyle : $("#enheight_id"),
+    $slideId : $("#slide_id"),
     btnAfterTop :10,
     contentInitTop : 30,
     enheightInit : 12,
@@ -207,10 +208,15 @@ listEposide = function (obj) {
         var $content = $obj.next(".content");
         userParam.randomBorder($content[0]);
         $content.css("top", $obj.data('top') + userParam.contentInitTop + "px");
+        // if($obj.data('top') > 5){
+        //     userParam.$slideId.text('');
+        // }else{
+        //     userParam.$slideId.text('.enheight{height: 0;transition: all 0.8s;}');
+        // }
         $parent.siblings("li").removeClass("active");
         $parent.addClass('active');
         var height = parseInt(getStyle($content[0], "height"));
-        userParam.$enHeiStyle.text('.active .enheight{height:'+(height+userParam.enheightInit)+'px;}');
+        userParam.$enHeiStyle.text(' .active .enheight{height:'+(height+userParam.enheightInit)+'px;}');
     }
 };
 startPlayer = function (url,obj,m) {

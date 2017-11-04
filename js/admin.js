@@ -2,9 +2,10 @@ $(function () {
     url = {
         dictUrl : {
             delete : "http://117.48.204.110/xmmrh/dict/deleteit.json",
-            save : "http://117.48.204.110/xmmrh/dict/saveit.json",
+            savedict : "http://117.48.204.110/xmmrh/dict/saveit.json",
             selOnchange : "http://117.48.204.110/xmmrh/dict/getT.json",
-            types: "http://117.48.204.110/xmmrh/dict/types.json"
+            types: "http://117.48.204.110/xmmrh/dict/types.json",
+            urlsave : "http://117.48.204.110/xmmrh/v/saveit.jspx"
         }
     };
     $.ajax({
@@ -26,7 +27,7 @@ $(function () {
 submitit = function (obj) {
     var urlVal = $(obj).find("input:eq(0)").val();
     $.ajax({
-        url:obj.action,
+        url:url.dictUrl.urlsave,
         data:$(obj).serialize(),
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -54,7 +55,7 @@ submitit = function (obj) {
 forceUpdate = function (obj) {
     var urlVal = $(obj).find("input:eq(0)").val();
     $.ajax({
-        url:obj.action,
+        url:url.dictUrl.urlsave,
         data:$(obj).serialize().replace("forceUp=false","forceUp=true"),
         type:"POST",
         // contentType : "application/json;charset=utf-8",
@@ -105,7 +106,7 @@ dict = {
 
 submitDict = function (obj) {
     $.ajax({
-        url:url.dictUrl.save,
+        url:url.dictUrl.savedict,
         data:$(obj).serialize(),
         type:"POST",
         // contentType : "application/json;charset=utf-8",

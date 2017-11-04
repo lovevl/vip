@@ -30,6 +30,9 @@ body{
         height: 340px;
     }
 }
+.user-title{
+    margin-bottom: 40px;
+}
 .player-i{
     position: relative;
     margin: 0 auto;

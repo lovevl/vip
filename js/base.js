@@ -18,7 +18,6 @@ function initTypes(typeNames) {
         success:function (data) {
             if(data.status == "success"){
                 $.extend((window._typesMap = window._typesMap || {}),data.data);
-                console.log(window._typesMap);
             }else{
                 console.log(data.message);
             }

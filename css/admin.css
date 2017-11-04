@@ -1,0 +1,18 @@
+header{
+    margin-bottom: 100px;
+}
+.row h4{
+    color: #5bc0de;
+}
+.box-bottom{
+    margin-bottom: 10px;
+}
+.dict-sel{
+    display: inline-block;
+    width: 40%;
+}
+.add-sel{
+    display: inline-block;
+    width: 20%;
+    height: 26px;
+}

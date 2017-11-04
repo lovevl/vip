@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/admin.css">
+    <title>推荐表</title>
+    <style>
+        .recom.pagination{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <h4>推荐表</h4>
+        <div class="box-bottom">
+            <span><strong>类型：</strong></span>
+            <select class="form-control dict-sel" name="type" id="video_type_id" onchange="getRec(this);">
+
+            </select>
+        </div>
+        <table class="table table-bordered" id="type_table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <td>电视剧名字</td>
+                <td>总集数</td>
+                <td>取消推荐？</td>
+            </tr>
+            </thead>
+            <tbody id="table_rec_id">
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        <nav aria-label="Page navigation" id="init_rec_id">
+
+        </nav>
+        <h4>全部表</h4>
+        <div class="box-bottom" id="video_box">
+            <span><strong>类型：</strong></span>
+            <!--<select class="form-control dict-sel" name="type" id="video_type_id2" >-->
+
+            <!--</select>-->
+        </div>
+        <table class="table table-bordered" id="">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <td>电视剧名字</td>
+                <td>新增一集?</td>
+                <td>是否推荐</td>
+                <td>删除？</td>
+            </tr>
+            </thead>
+            <tbody id="table_all_id">
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        <nav aria-label="Page navigation" id="getall_navi_id">
+
+        </nav>
+    </div>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="js/base.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/adminPage.js"></script>
+<script type="text/javascript">
+    initTypes("watchType");
+    $(function () {
+        rem = {
+            $videoType : $('#video_type_id'),
+            $tableRecId : $('#table_rec_id'),
+            $tableAllId : $('#table_all_id'),
+            $initRecId : $('#init_rec_id'),
+            $getAllId : $('#getall_navi_id'),
+            initRecUrl : "http://117.48.204.110/xmmrh/v/getRTVorM.json",
+            showAllUrl : "http://117.48.204.110/xmmrh/v/getTVorM.json",
+            cancelUrl : "http://117.48.204.110/xmmrh/v/cancelOr.json",
+            deleteOne : "http://117.48.204.110/xmmrh/v/delete.json"
+        }
+        if(window._typesMap){
+            var map = window._typesMap["watchType"];
+            for(var val in map){
+                var $op = $('<option value="'+val+'">'+map[val]+'</option>');
+                rem.$videoType.append($op);
+            }
+            var $selectAll = rem.$videoType.clone();
+            $selectAll.removeAttr("id").attr("onchange","showAll(this)");
+            $('#video_box').append($selectAll);
+        };
+
+        initRec();
+        getAll();
+    });
+
+
+
+    getRec = function (obj) {
+        initRec({type:$(obj).val(),pageNo:1,length:8});
+    };
+    
+    initRec = function (params) {
+        if(!params)
+            params = {type:1,pageNo:1,length:8};
+        $.ajax({
+            url : rem.initRecUrl,
+            data : params,
+            type : "POST",
+            success :function (data) {
+                if(data.status ==  "success"){
+                    var page = data.page;
+                    listTableRec(data.data);
+                    rem.$initRecId.empty().append(rem_pageCount.createPageCount(page,params.type,"initRec"));
+                }
+            },
+            error : function () {
+                alert("获取推荐失败");
+            }
+        });
+    };
+
+    listTableRec = function (array) {
+        if(array){
+            rem.$tableRecId.empty();
+            for(var i in array){
+                var $tr = $('<tr></tr>');
+                var $th = $('<th>'+(1+parseInt(i))+'</th>');
+                var $td1 = $('<td>'+array[i].name+'</td>');
+                var count = 1,$td2,$td3;
+                if(array[i].count){
+                    count = array[i].count;
+                    $td2 = $('<td>'+count+'</td>');
+                    $td3 = $('<td><button class="btn btn-xs btn-danger" data-type="2" data-id="'+array[i].id+'" onclick="cancelOr(this)">是</button></td>');
+                }else{
+                    count = array[i].count;
+                    $td2 = $('<td>1</td>');
+                    $td3 = $('<td><button  class="btn btn-xs btn-danger" data-type="1" data-id="'+array[i].id+'" onclick="cancelOr(this)">是</button></td>');
+                }
+                $tr.append($th).append($td1).append($td2).append($td3);
+                rem.$tableRecId.append($tr);
+            }
+        }
+    };
+
+    cancelOr = function (obj,flag) {
+        var $obj = $(obj);
+        $.ajax({
+            url : rem.cancelUrl,
+            data : {id:$obj.data("id"),type:$obj.data("type")},
+            type : "POST",
+            success : function (data) {
+                if(data.status == "success"){
+                    if(data.cancel == "true"){
+                        $obj.parents("tr").remove();
+                    }else{
+                        $obj.parent().html("已推荐");
+                    }
+                }
+            },
+            error : function () {
+                alert("推荐问题");
+            }
+
+        });
+    }
+    showAll = function (obj) {
+        getAll({type:$(obj).val(),pageNo:1,length:8});
+    }
+
+    getAll = function (params) {
+        if(!params)
+            params = {type:1,pageNo:1,length:8};
+        $.ajax({
+            url : rem.showAllUrl,
+            data : params,
+            type : "POST",
+            success :function (data) {
+                if(data.status ==  "success"){
+                    var page = data.page;
+                    listTableAll(data.data);
+                   rem.$getAllId.empty().append(rem_pageCount.createPageCount(page,params.type,"getAll"));
+                }
+            },
+            error : function () {
+                alert("获取推荐失败");
+            }
+        });
+    };
+
+    listTableAll = function (array) {
+        if(array){
+            rem.$tableAllId.empty();
+            for(var i in array){
+                var $tr = $('<tr></tr>');
+                var $th = $('<th>'+(1+parseInt(i))+'</th>');
+                var $td1 = $('<td>'+array[i].name+'</td>');
+                var count = 1,$td2,$td3,$td4;
+                if(array[i].count){
+                    count = array[i].count;
+                    var l = array[i].tvCounts.length,
+                    c = array[i].count;
+                    if(l != c){
+                        $td2 = $('<td>'+array[i].tvCounts.length+'/'+array[i].count+'&nbsp;&nbsp;<button class="btn btn-xs btn-danger" data-type="2" data-id="'+array[i].id+'" onclick="addNew(this)">是</button>'+
+                            '未更完</td>');
+                    }else{
+                        $td2 = $('<td>'+array[i].tvCounts.length+'/'+array[i].count+'&nbsp;&nbsp;<button class="btn btn-xs btn-danger" data-type="2" data-id="'+array[i].id+'" onclick="addNew(this)">是</button></td>');
+                    }
+                    if(array[i].recommend == 1){
+                        $td3 = $('<td>已推荐</td>');
+                    }else{
+                        $td3 = $('<td><button class="btn btn-xs btn-danger" data-type="2" data-id="'+array[i].id+'" onclick="cancelOr(this)">是</button></td>');
+                    }
+                    $td4 = $('<td><button class="btn btn-xs btn-success" data-type="2" data-id="'+array[i].id+'" onclick="if(confirm(\'确定删除？\')){deleteThis(this);}">是</button></td>');
+                }else{
+                    count = array[i].count;
+                    $td2 = $('<td><span>null</span></td>');
+                    if(array[i].recommend == 1){
+                        $td3 = $('<td>已推荐</td>');
+                    }else {
+                        $td3 = $('<td><button class="btn btn-xs btn-danger" data-type="1" data-id="' + array[i].id + '" onclick="cancelOr(this)">是</button></td>');
+                    }
+                    $td4 = $('<td><button class="btn btn-xs btn-success" data-type="1" data-id="'+array[i].id+'" onclick="if(confirm(\'确定删除？\')){deleteThis(this);}">是</button></td>');
+                }
+                $tr.append($th).append($td1).append($td2).append($td3).append($td4);
+                rem.$tableAllId.append($tr);
+            }
+        }
+    }
+
+    deleteThis = function (obj) {
+        var $obj = $(obj);
+        $.ajax({
+            url : rem.deleteOne,
+            data : {type:$obj.data("type"),id:$obj.data("id")},
+            type : "POST",
+            success :function (data) {
+                if(data.status ==  "success"){
+                    $obj.parents("tr").remove();
+                }
+            },
+            error : function () {
+                alert("获取推荐失败");
+            }
+        });
+    }
+    
+    
+</script>
+</html>
